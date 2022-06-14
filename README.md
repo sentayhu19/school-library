@@ -19,7 +19,7 @@ Setup
     Run bundle install
     Run rubocop
 
-## Authors
+## Author
 
 👤 **Sentayhu Berhanu**
 
