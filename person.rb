@@ -7,6 +7,7 @@ class Person
     @age = age
     @id = Random.rand(1...5000)
   end
+
   def of_age?
     @age >= 18
   end
