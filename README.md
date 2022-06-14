@@ -7,7 +7,7 @@ The School library app Implemented classes and objects in Ruby.
 
  git clone https://github.com/sentayhu19/school-library.git <Your-Build-Directory>
 ``` 
-- cd Decode-Morse-code
+- cd school-library
 ```
 ## Prerequisites
 
