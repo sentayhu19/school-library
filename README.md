@@ -21,11 +21,6 @@ Setup
 
 ## Authors
 
-👤 **Ifza Rasool**
-
-- GitHub: [@IfzaRasool](https://github.com/IfzaRasool)
-- LinkedIn: [@IfzaRasool](https://www.linkedin.com/in/ifza-arain/)
-
 👤 **Sentayhu Berhanu**
 
 - GitHub: [@sentayhu19](https://github.com/sentayhu19)
