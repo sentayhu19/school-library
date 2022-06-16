@@ -23,6 +23,11 @@ class Person < Nameable
   def correct_name
     @name
   end
+
+  def add_rental(person, date)
+    @rental = Rental.new(date)
+    @rental.student = person
+  end
 end
 # Check decorate for person
 person = Person.new(22, 'maximilianus')
