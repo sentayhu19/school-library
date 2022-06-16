@@ -10,6 +10,7 @@ class Person < Nameable
     @parent_permission = parent_permission
     @age = age
     @id = Random.rand(1...5000)
+    @rentals = []
   end
 
   def of_age?
@@ -22,6 +23,12 @@ class Person < Nameable
   public :can_use_services?
   def correct_name
     @name
+  end
+
+  def add_rental(person, date, book)
+    @rental = Rental.new(date, person, book)
+    @rental.student = person
+    @rental.book = book
   end
 end
 # Check decorate for person
