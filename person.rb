@@ -2,7 +2,8 @@ require_relative './nameable'
 require_relative './capitalize_decorator'
 require_relative './trimmer_decorator'
 class Person < Nameable
-  attr_accessor :name, :age, :id
+  attr_accessor :name, :age
+  attr_reader :rentals, :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
@@ -25,16 +26,15 @@ class Person < Nameable
     @name
   end
 
-  def add_rental(person, date, book)
-    @rental = Rental.new(date, person, book)
-    @rental.student = person
-    @rental.book = book
+  def add_rental(rental)
+    @rentals.push(rental) unless @rentals.include?(rental)
+    rental.person = self
   end
 end
-# Check decorate for person
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalized_person = CapitalizeDecorator.new(person)
-puts capitalized_person.correct_name
-capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
-puts capitalized_trimmed_person.correct_name
+      # Check decorate for person
+# person = Person.new(22, 'maximilianus')
+# person.correct_name
+# capitalized_person = CapitalizeDecorator.new(person)
+# puts capitalized_person.correct_name
+# capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
+# puts capitalized_trimmed_person.correct_name
