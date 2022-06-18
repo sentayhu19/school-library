@@ -180,13 +180,4 @@ class App
       @user_input = gets.chomp
     end
   end
-
-  # PARTIALS --------------------------------------------------------------------------
-  # PARTIALS END   --------------------------------------------------------------------
 end
-
-def main
-  app = App.new
-  app.run
-end
-main
