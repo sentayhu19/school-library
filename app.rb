@@ -5,12 +5,12 @@ require_relative './student'
 require_relative './book'
 require_relative './rental'
 require_relative './teacher'
-
+require_relative './partials'
 class App
   attr_accessor :user_input
 
   def initialize
-    menu
+    Partials.menu
     @user_input = gets.chomp
     @default_classroom = Classroom.new('default-classroom')
     @people = []
@@ -23,16 +23,16 @@ class App
   end
 
   def student_info
-    age = read_age
-    name = read_name
-    has_parent_permission = read_permission == 'Y'
+    age = Partials.read_age
+    name = Partials.read_name
+    has_parent_permission = Partials.read_permission == 'Y'
     [age, name, has_parent_permission]
   end
 
   def teacher_info
-    age = read_age
-    name = read_name
-    specialization = read_specialization
+    age = Partials.read_age
+    name = Partials.read_name
+    specialization = Partials.read_specialization
     [age, name, specialization]
   end
 
@@ -47,9 +47,9 @@ class App
     when '2'
       age, name, specialization = teacher_info
       person = Teacher.new(age, specialization, name)
-   else
-        puts 'Invalid input'
-        create_person
+    else
+      puts 'Invalid input'
+      create_person
     end
 
     @people << person
@@ -78,17 +78,12 @@ class App
 
   def list_all_books
     @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: \"#{book.author}\"" }
-    puts "Enter any key to continue to Menu:"
-    anykey = gets.chomp
-
   end
 
   def list_all_people
     @people.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
-    puts "Enter any key to continue to Menu:"
-    anykey = gets.chomp
   end
 
   def read_desired_book
@@ -177,59 +172,17 @@ class App
       else
         puts "\nInvalid input \"#{user_input}\"!"
         puts 'Error, please try with one of these options:'
-        menu
+        Partials.menu
         @user_input = gets.chomp
         run
       end
-      menu
+      Partials.menu
       @user_input = gets.chomp
     end
   end
-  #PARTIALS --------------------------------------------------------------------------
-  def intro
-    puts 'Welcome to the School library App!'.blue
-  end
 
-  def menu
-    intro
-    puts '
-            Please choose an option by entering a number:
-            1, List all books
-            2, List all people
-            3, Create a person
-            4, Create a book
-            5, Create a rental
-            6, List all rentals for a given person id
-            7, Exit'
-    print 'option: '
-  end
-
-  def read_name
-    print 'Name: '
-    name = gets.chomp
-    name.empty? ? read_name : name
-  end
-
-  def read_age
-    print 'Age: '
-    age = gets.chomp.to_i
-    (1..1000).include?(age) ? age : read_age
-  end
-
-  def read_permission
-    print 'Has parent permission? [Y/N]: '
-    permission = gets.chomp
-    %w[Y N].include?(permission.capitalize) ? permission.capitalize : read_permission
-  end
-
-  def read_specialization
-    print 'Specialization: '
-    specialization = gets.chomp
-    specialization.empty? ? read_specialization : specialization
-    print "\e[2J\e[f"
-  end
-
-  #PARTIALS END   --------------------------------------------------------------------
+  # PARTIALS --------------------------------------------------------------------------
+  # PARTIALS END   --------------------------------------------------------------------
 end
 
 def main

@@ -31,7 +31,7 @@ class Person < Nameable
     rental.person = self
   end
 end
-      # Check decorate for person
+# Check decorate for person
 # person = Person.new(22, 'maximilianus')
 # person.correct_name
 # capitalized_person = CapitalizeDecorator.new(person)
